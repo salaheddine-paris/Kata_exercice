@@ -26,9 +26,16 @@ public class ExportCampaignService {
     this.mailService = mailService;
   }
 
-  public void creerSurvey(final Survey survey) {
+  public void createSurvey(final Survey survey) {
     campaignWebService.createSurvey(survey);
   }
+  public void updateSurvey(final Survey survey) {
+    campaignWebService.updateSurvey(survey);
+  }
+  public void deleteSurvey(String id) {
+    campaignWebService.deleteSurvey(id);
+  }
+
 
   public Survey getSurvey(final String id) {
     return campaignWebService.getSurvey(id);
@@ -37,6 +44,13 @@ public class ExportCampaignService {
   public void createCampaign(final Campaign campaign) {
     campaignWebService.createCampaign(campaign);
   }
+  public void updateCampaign(final Campaign campaign) {
+    campaignWebService.updateCampaign(campaign);
+  }
+  public void deleteCampaign(String id) {
+    campaignWebService.deleteCampaign(id);
+  }
+
 
   public Campaign getCampaign(final String id) {
     return campaignWebService.getCampaign(id);
@@ -89,12 +103,12 @@ public class ExportCampaignService {
 
     final Row clientRow = sheet.createRow(3);
     final Cell nomClientRowLabel = clientRow.createCell(0);
-    nomClientRowLabel.setCellValue(survey.getClient());
+    nomClientRowLabel.setCellValue(survey.getClient().getId());
     nomClientRowLabel.setCellStyle(style);
 
-    final String clientAddress = survey.getClientAddress().getStreetNumber() + " "
-            + survey.getClientAddress().getStreetName() + survey.getClientAddress().getPostalCode() + " "
-            + survey.getClientAddress().getCity();
+    final String clientAddress = survey.getClient().getAddress().getStreetNumber() + " "
+            + survey.getClient().getAddress().getStreetName() + survey.getClient().getAddress().getPostalCode() + " "
+            + survey.getClient().getAddress().getCity();
 
     final Row clientAddressLabelRow = sheet.createRow(4);
     final Cell clientAddressCell = clientAddressLabelRow.createCell(0);

@@ -8,8 +8,7 @@ import java.util.List;
 public class Survey {
     private String id;
     private String sommary;
-    private String client;
-    private Address clientAddress;
+    private Client client;
     private List<Question> questions;
 }
 
